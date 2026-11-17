@@ -163,5 +163,42 @@
       "external_requests": 0,
       "console_errors": 0
     }
+  },
+  "release_0_3_2": {
+    "release": "0.3.2",
+    "observed_on": "2026-11-17",
+    "tests": {
+      "test-seo-pack": {
+        "count": 29,
+        "log_sha256": "c2721ad083c6f0dd612285e47bd85be08db9e6e17d9c92649a12f2b2f83bc7c3"
+      },
+      "test-seo-master-sites": {
+        "count": 64,
+        "log_sha256": "893fbc5666295d225ac4ec713a7c5cafa11fe3ee23c6d68ba8652bc3d740c0df"
+      },
+      "test-seo-master-downloads": {
+        "count": 6,
+        "log_sha256": "18decbfa1b3e0a312c9ddeced2c988a994bae44d43014cab6e1001bf28163f86"
+      },
+      "test-seo-master-quick-audit": {
+        "count": 11,
+        "log_sha256": "364ee90269618c7b007ee3dee0511f2c9e5c4cf9a8d29906fc5deef919ed7a4c"
+      },
+      "upstream-compat": {
+        "count": 753,
+        "log_sha256": "591838b3dfd053f912d2ecac7b414da5b128f39ba28f72a053e02280d7e33554"
+      }
+    },
+    "fixes": [
+      "requirement status remains unknown until verified against applicable engine evidence",
+      "optional preview image child fields require a declared parent image",
+      "priorities require a concrete next action",
+      "canonical recommendation depends on the preferred URL and observed duplicate signals"
+    ],
+    "offline_browser": {
+      "report_sha256": "66ef99c50d183e935d3c9ac9275f3786da078f0cd5b3a97e2d4baca4c6dd49a1",
+      "external_requests": 0,
+      "console_errors": 0
+    }
   }
 }

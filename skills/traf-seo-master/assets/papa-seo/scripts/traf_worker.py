@@ -133,6 +133,9 @@ def quote_for(row, source, page):
                                     for value in ("noindex", "none")), target)
     if check.startswith("access.canonical_") and check not in ("access.canonical_present", "access.canonical_target_status"):
         return source.match("link", lambda a: "canonical" in tag_value(a, "rel").split(), target)
+    if check == "markup.og_image_alt":
+        return source.match("meta", lambda a: tag_value(a, "property") == "og:image"
+                            and bool(tag_value(a, "content").strip()), target)
     if check == "links.nofollow_internal":
         examples = (row.get("evidence") or "").split("; ")
         return source.match("a", lambda a: "nofollow" in tag_value(a, "rel").split()
@@ -154,13 +157,26 @@ def qualify_page(page, raw, index_intent):
     optional = {"markup.og_required", "markup.jsonld_present", "meta.favicon_declared"}
     noindex = {"access.noindex_meta", "access.noindex_header"}
     source = SourceQuotes(raw)
+    metadata = {(tag_value(a, "property") or tag_value(a, "name")): tag_value(a, "content").strip()
+                for a, _, _ in source.tags.get("meta", [])}
+    og_declared = any(key.startswith("og:") for key in metadata)
+    twitter_declared = any(key.startswith("twitter:") for key in metadata)
     for row in page.get("rows", []):
+        row["master_diagnostic"] = True
         check, verdict = row["id"], row["verdict"]
         if verdict not in (audit.BAD, audit.WARN):
             continue
-        if verdict == audit.BAD and check in optional:
+        needs_og_image = check.startswith("markup.og_image_") and not metadata.get("og:image")
+        needs_og = check.startswith("markup.og_") and not og_declared
+        needs_twitter = check.startswith("markup.twitter_") and not twitter_declared
+        needs_twitter_image = check == "markup.twitter_image_alt" and not (
+            metadata.get("twitter:image") or metadata.get("og:image"))
+        if ((verdict == audit.BAD and check in optional) or needs_og_image or needs_og
+                or needs_twitter or needs_twitter_image):
             row.update(verdict=audit.INFO, verdict_label=audit.VERDICT_RU[audit.INFO],
-                       fix="Проверьте, нужна ли эта возможность данному типу страницы.")
+                       fix="Сверьте применимость предпросмотра или разметки для этой страницы.")
+        elif check == "markup.og_image_alt":
+            row["fix"] = "Задайте og:image:alt с описанием опубликованного изображения."
         elif verdict == audit.BAD and check == "mobile.viewport_present":
             row.update(verdict=audit.WARN, verdict_label=audit.VERDICT_RU[audit.WARN],
                        observation="В исходном HTML отсутствует meta viewport.",

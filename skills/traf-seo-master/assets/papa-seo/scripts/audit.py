@@ -861,7 +861,9 @@ def c_canonical(ctx):
     canon = ctx.get("canonical") or []
     header = ctx.get("canonical_header")
     if not canon and not header:
-        return warn("Канонического адреса нет", fix="Добавить <link rel=\"canonical\"> на сам себя")
+        return warn("Явный canonical не задан",
+                    fix="Определите предпочтительный URL по содержимому и другим сигналам. "
+                        "При необходимости укажите подтверждённый основной адрес.")
     if len(canon) > 1:
         return bad("Несколько rel=canonical", value=len(canon),
                    evidence=esc("; ".join(c.get("href", "") for c in canon), 200), severity="high",
@@ -880,9 +882,10 @@ def c_canonical_self(ctx):
     if not canon or not ctx.url:
         return nodata("Нет canonical или адреса страницы")
     if ctx.flag("canonical_not_self"):
-        return warn("Канонический адрес ведёт на другую страницу — этот адрес из индекса уйдёт",
+        return warn("Объявленный canonical указывает на другой URL",
                     value=esc(canon[0]["href"], 160),
-                    fix="Это нормально для дублей; для самостоятельной страницы поставить canonical на себя")
+                    fix="Сверьте содержимое и доступность целевого URL. Для подтверждённого дубля "
+                        "проверьте, что выбран основной адрес. Фактический выбор смотрите в отчёте поисковика.")
     return ok("Canonical указывает на этот же адрес")
 
 
@@ -2983,7 +2986,8 @@ def queue_key(item: dict) -> tuple:
 def queue_rows(rows: list[dict]) -> list[dict]:
     """Что страница ставит в очередь. Если сработало блокирующее условие — только его: пока
     страница не отвечает 200 или закрыта от индексации, советы про og:description — шум."""
-    return blocking_rows(rows) or [r for r in rows if r["verdict"] in (BAD, WARN)]
+    candidates = blocking_rows(rows) or [r for r in rows if r["verdict"] in (BAD, WARN)]
+    return [row for row in candidates if not row.get("master_diagnostic") or row.get("fix")]
 
 
 def queue_item(row: dict, *, registry: dict | None = None) -> dict:
@@ -2999,6 +3003,8 @@ def queue_item(row: dict, *, registry: dict | None = None) -> dict:
             and is_engine_requirement(row)}
     if row.get("note"):
         item["note"] = row["note"]
+    if row.get("master_diagnostic"):
+        item["search_engine_requirement"] = None
     for key in ("source_quote", "evidence_kind"):
         if row.get(key):
             item[key] = row[key]
@@ -3179,6 +3185,9 @@ def build_report(pages: list[dict], *, registry: dict, keys: list[str], options:
     else:
         site_raw = []
     site_raw += promoted_host_rows(ok_pages, registry, {r["id"] for r in site_raw})
+    if options.get("page_policy"):
+        for row in site_raw:
+            row["master_diagnostic"] = True
     site_rows = merge_registry(site_raw, registry, SITE_CHECKS, pages=len(ok_pages), scope="site")
     site = None
     if site_rows:
@@ -3235,6 +3244,12 @@ def build_report(pages: list[dict], *, registry: dict, keys: list[str], options:
         "rows_from_scripts": sum(1 for r in all_rows if r.get("from_script")),
         "off_registry": sum(1 for r in all_rows if r.get("off_registry")),
     }
+    if options.get("page_policy"):
+        # The fast collector observes diagnostics. A source label alone does
+        # not qualify a claim as a current search-engine requirement.
+        fixes = [item for item in fixes if item.get("fix")]
+        for item in fixes:
+            item["search_engine_requirement"] = None
     fixes.sort(key=queue_key)
     report = {
         "tool": "audit", "version": VERSION, "notice": NOTICE,
@@ -3502,17 +3517,18 @@ def _fix_li(item: dict, total: int) -> str:
             + proof + "</li>")
 
 
-def _fix_html(items: list[dict], total: int = 1) -> str:
+def _fix_html(items: list[dict], total: int = 1, *, master: bool = False) -> str:
     """Очередь: сначала требования, ориентиры редактора — свёрнуто ниже, чтобы мнение
     не стояло в одном ряду с тем, что требует поисковик."""
     if not items:
-        return "<p>Проблем и предупреждений нет.</p>"
+        return ("<p>Собранные наблюдения находятся в таблицах ниже.</p>" if master
+                else "<p>Проблем и предупреждений нет.</p>")
     must = [i for i in items if not i.get("editor_guideline")]
     edit = [i for i in items if i.get("editor_guideline")]
     out = []
     if must:
         out.append('<ol class="fix">' + "".join(_fix_li(i, total) for i in must) + "</ol>")
-    else:
+    elif not master:
         out.append("<p>Требований поисковиков, которые не выполнены, не нашлось.</p>")
     if edit:
         out.append(f'<details><summary>Ориентиры редактора: {len(edit)} — советы, а не требования '
@@ -3685,10 +3701,10 @@ def render_html(report: dict) -> str:
     checked = sum(1 for p in report["pages"] if not p.get("error"))
     queue = report["fix_first"]
     if report.get("master_page_evidence") and len(queue) > 5:
-        parts.append(_fix_html(queue[:5], checked))
-        parts.append('<details><summary>Следующие находки</summary>' + _fix_html(queue[5:], checked) + '</details>')
+        parts.append(_fix_html(queue[:5], checked, master=True))
+        parts.append('<details><summary>Следующие находки</summary>' + _fix_html(queue[5:], checked, master=True) + '</details>')
     else:
-        parts.append(_fix_html(queue, checked))
+        parts.append(_fix_html(queue, checked, master=report.get("master_page_evidence", False)))
     if report.get("recurring"):
         parts.append(_recurring_html(report["recurring"], checked))
     if not many:
@@ -3794,6 +3810,17 @@ def verdict_text(report: dict) -> str:
     if not ok_pages:
         return "Проверить не удалось: " + "; ".join(
             esc(p.get("error"), 120) for p in report["pages"][:3]) + "."
+    if report.get("master_page_evidence"):
+        head = f"Проверено {_qty(len(ok_pages), 'страница', 'страницы', 'страниц')}"
+        if failed:
+            head += f", не открылось {failed}"
+        head += "."
+        if blocked:
+            signals = "; ".join(sorted({note for p in blocked for note in p["blocking"]}))
+            head += " Возможные ограничения поиска по собранным данным: " + signals + ". Сверьте ожидаемое состояние URL."
+        if fixes:
+            head += " Ниже применимые подсказки и условия для проверки по каждому пункту."
+        return head
     if blocked and not many:
         status = blocked[0].get("status")
         heading = ("Блокирует доступ в проверенном запросе: " if isinstance(status, int) and status >= 400
@@ -3926,6 +3953,9 @@ def brief_report(report: dict) -> dict:
         out["host"] = host
     if _n(cov.get("registry_no_data_only")):
         out["registry"]["no_data_only"] = cov["registry_no_data_only"]
+    if report.get("master_page_evidence"):
+        out["findings"] = report["fix_first"][:5]
+        out["findings_total"] = {"candidate_actions": len(report["fix_first"])}
     if not out["pages_failed"]:
         del out["pages_failed"]
     return out

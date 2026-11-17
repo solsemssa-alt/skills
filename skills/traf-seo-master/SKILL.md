@@ -4,7 +4,7 @@ description: "Use when doing SEO, GEO, content, publishing or acquisition."
 license: MIT
 metadata:
   author: TRAF
-  version: "0.3.1"
+  version: "0.3.2"
 ---
 
 # TRAF SEO Master
