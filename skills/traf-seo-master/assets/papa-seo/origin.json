@@ -5,9 +5,9 @@
   "version": "0.2.4",
   "license": "MIT",
   "local_runtime_changes": {
-    "scripts/audit.py": "callback inputs for scoped fetching and page qualification, internal nofollow context, conditional indexability wording",
+    "scripts/audit.py": "scoped audit callbacks, conditional indexability, and escaped literal evidence in the HTML queue",
     "scripts/http_safe.py": "per-hop policy callback before DNS/network",
-    "scripts/traf_worker.py": "Master scope, robots, request budget, optional-feature qualification and run receipt"
+    "scripts/traf_worker.py": "Master scope, robots, budget, contextual findings and literal HTML/header evidence"
   },
   "files_sha256": {
     "LICENSE": "4f635c94194aa708cc504311b8645fab79ca69622f3c9cfe684fe1097e56db69",
@@ -44,7 +44,7 @@
     "references/ai-bots.json": "c98da14acdd144a6741c6a4e9308cc9fff134fa31122098a434b0e73dc3bcd7f",
     "references/ai-bots.yaml": "995819d9edb448be3c4eae9c6bc37297f6fde7626a19ab3045588698d25cdfd0",
     "references/registry.json": "bfd4057202a978e6e5a7eec4d0bd03309e18e499d240a9eab93b4e65917df556",
-    "scripts/audit.py": "9bc4bc6cce18077edca72fb6370eda921d5975e8f185c6804ab7c18dd9d11567",
+    "scripts/audit.py": "10bae229460e36eb66f70c8e777b5797ac20e68d91d9944fefe744c50d383425",
     "scripts/bot_verify.py": "9959154cd6162cd6ab32b0ce955137ae64f8159d93e72938290eba21ad46d79e",
     "scripts/deai_scan.py": "2b8e24e204d114880671064f02a51ba134d6ccb5ed4bc636e74f74303b344894",
     "scripts/factdiff.py": "09d8e78f27d253a7df716cff4b930404c310b44be727a2be43b30332540afd9b",
@@ -56,7 +56,7 @@
     "scripts/schema_check.py": "43199f0e08e35526bd7bf9b368ff6b41bf5463ec83ade0cd504bb4bfd21f3168",
     "scripts/sitemap_check.py": "e450c0957f12480da625928287fba895295ec56177a19dee075347f5913144d2",
     "scripts/text_metrics.py": "01204feec93fef64511db68ec0b89c77229496b19e9aea2c1fca9c6eb492b595",
-    "scripts/traf_worker.py": "615d39efaf65bdfe9d5515b20e32a120c8646dee172dc2013b238b292db6fa3d",
+    "scripts/traf_worker.py": "4b0893170e37d6d12ed003b23d31480f4b4a61feb765b9fc42eda05abf456017",
     "source.lock.json": "26c34956f70ceda37ce585177a140cbed73d10b2a69f31b4c957f3a4f8b60d8c"
   }
 }

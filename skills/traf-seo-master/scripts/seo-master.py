@@ -623,11 +623,12 @@ def quick_audit(args):
     for keys in args.keys:
         argv.extend(["--keys", keys])
     write_json(request_path, {"argv": argv, "urls": urls, "site_sample": bool(args.site),
-                              "request_budget": request_budget})
+                              "request_budget": request_budget, "index_intent": args.index_intent})
     receipt = {"schema_version": 1, "status": "error", "scope": scope, "source": source,
                "started_at": utc_now(), "collector_version": origin["version"],
                "collector_commit": origin["commit"], "network_requests": None,
-               "request_budget": request_budget, "returncode": None, "errors": []}
+               "request_budget": request_budget, "index_intent": args.index_intent,
+               "returncode": None, "errors": []}
     if supplied_html is not None:
         receipt["input_sha256"] = hashlib.sha256(supplied_html).hexdigest()
     stdout_path, stderr_path = output / "collector-stdout.json", output / "collector-stderr.log"
@@ -718,6 +719,7 @@ def main():
     command.add_argument("--limit", type=int, default=10, help="sitemap sample pages (default 10, max 100)")
     command.add_argument("--keys", action="append", default=[], help="keyword phrases, separated by semicolons")
     command.add_argument("--lang", choices=("auto", "ru", "en"), default="auto")
+    command.add_argument("--index-intent", choices=("index", "exclude", "unknown"), default="unknown")
     command.add_argument("--timeout", type=float, default=240)
     for name in ("site-add", "site-audit", "site-missing"):
         command = commands.add_parser(name)

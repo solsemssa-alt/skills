@@ -1,10 +1,13 @@
 """Run the vendored read-only audit with Master scope and request limits."""
 
 from collections import Counter
+from html.parser import HTMLParser
 import ipaddress
 import json
 from pathlib import Path
+import re
 import sys
+from urllib.parse import urljoin
 
 # The parent starts an isolated interpreter. Only this verified vendor bundle
 # supplies the audit, its parser modules, and its catalogues.
@@ -84,19 +87,104 @@ class ScopedFetcher(http_safe.Fetcher):
         return self.robots_responses[target.origin]
 
 
-def qualify_optional_findings(page):
-    previews = {"markup.og_required", "markup.jsonld_present", "meta.favicon_declared"}
+class SourceQuotes(HTMLParser):
+    """Retain original tag lexemes and line numbers for direct findings."""
+
+    def __init__(self, raw):
+        super().__init__(convert_charrefs=True)
+        self.tags = {}
+        self.feed(raw)
+        self.close()
+
+    def handle_starttag(self, tag, attributes):
+        if tag not in {"html", "meta", "link", "title", "h1", "a", "img", "script"}:
+            return
+        candidates = self.tags.setdefault(tag, [])
+        if len(candidates) < 2000:
+            candidates.append((dict(attributes), self.get_starttag_text(), self.getpos()[0]))
+
+    def match(self, tag, selector, target):
+        for attributes, text, line in self.tags.get(tag, []):
+            if selector(attributes):
+                return {"kind": "html", "text": text[:512], "line": line, "target": target,
+                        "truncated": len(text) > 512}
+        return None
+
+
+def tag_value(attributes, key):
+    return (attributes.get(key) or "").casefold()
+
+
+def contains_directive(value, directive):
+    return directive in re.split(r"[^a-z0-9_-]+", value.casefold())
+
+
+def quote_for(row, source, page):
+    check = row["id"]
+    target = page.get("url") or page["target"]
+    if check == "access.noindex_header":
+        headers = page.get("facts", {}).get("page", {}).get("headers", {})
+        if headers.get("x-robots-tag"):
+            return {"kind": "http-header", "target": target,
+                    "text": "X-Robots-Tag: " + headers["x-robots-tag"][:512]}
+    if check == "access.noindex_meta":
+        return source.match("meta", lambda a: tag_value(a, "name") in ("robots", "googlebot", "yandex", "yandexbot", "bingbot")
+                            and any(contains_directive(tag_value(a, "content"), value)
+                                    for value in ("noindex", "none")), target)
+    if check.startswith("access.canonical_") and check not in ("access.canonical_present", "access.canonical_target_status"):
+        return source.match("link", lambda a: "canonical" in tag_value(a, "rel").split(), target)
+    if check == "links.nofollow_internal":
+        examples = (row.get("evidence") or "").split("; ")
+        return source.match("a", lambda a: "nofollow" in tag_value(a, "rel").split()
+                            and bool(a.get("href")) and urljoin(target, a["href"]) in examples, target)
+    if check in ("meta.title_count", "meta.title_length", "meta.title_stuffing", "meta.title_in_head"):
+        return source.match("title", lambda _: True, target)
+    if check in ("meta.h1_count", "meta.h1_is_logo", "meta.h1_empty_or_image"):
+        return source.match("h1", lambda _: True, target)
+    if check in ("markup.jsonld_parses", "markup.jsonld_type", "markup.jsonld_context"):
+        return source.match("script", lambda a: tag_value(a, "type") == "application/ld+json", target)
+    if check in ("mobile.viewport_zoom_blocked", "mobile.viewport_fixed_width", "mobile.viewport_device_width"):
+        return source.match("meta", lambda a: tag_value(a, "name") == "viewport", target)
+    # An absent tag, derived count, inventory, or network fact needs its own
+    # evidence type rather than an invented HTML quotation.
+    return None
+
+
+def qualify_page(page, raw, index_intent):
+    optional = {"markup.og_required", "markup.jsonld_present", "meta.favicon_declared"}
+    noindex = {"access.noindex_meta", "access.noindex_header"}
+    source = SourceQuotes(raw)
     for row in page.get("rows", []):
-        if row["verdict"] != audit.BAD:
+        check, verdict = row["id"], row["verdict"]
+        if verdict not in (audit.BAD, audit.WARN):
             continue
-        if row["id"] in previews:
+        if verdict == audit.BAD and check in optional:
             row.update(verdict=audit.INFO, verdict_label=audit.VERDICT_RU[audit.INFO],
                        fix="Проверьте, нужна ли эта возможность данному типу страницы.")
-        elif row["id"] == "mobile.viewport_present":
+        elif verdict == audit.BAD and check == "mobile.viewport_present":
             row.update(verdict=audit.WARN, verdict_label=audit.VERDICT_RU[audit.WARN],
                        observation="В исходном HTML отсутствует meta viewport.",
                        fix="Проверьте отображение в мобильном браузере.",
                        severity="low", severity_by_context=True)
+        if check in noindex and verdict == audit.BAD:
+            if index_intent == "exclude":
+                row.update(verdict=audit.INFO, verdict_label=audit.VERDICT_RU[audit.INFO],
+                           fix="Директива соответствует указанному исключению URL из поиска.")
+            elif index_intent == "unknown":
+                row.update(verdict=audit.WARN, verdict_label=audit.VERDICT_RU[audit.WARN],
+                           fix="Сверить назначение URL. Снять noindex для страницы, предназначенной для поиска.")
+        quote = quote_for(row, source, page)
+        if quote is not None:
+            row["source_quote"] = quote
+        else:
+            if check.startswith(("access.final_status", "access.redirect", "speed.ttfb")):
+                row["evidence_kind"] = "HTTP-ответ или заголовки"
+            elif check.startswith(("access.robots", "access.sitemap", "ai.llms_txt")):
+                row["evidence_kind"] = "отдельный ресурс или выборка адресов"
+            elif check.startswith("content."):
+                row["evidence_kind"] = "расчёт по извлечённому тексту"
+            else:
+                row["evidence_kind"] = "наблюдение по разобранной структуре HTML"
 
 
 def main(path):
@@ -111,7 +199,8 @@ def main(path):
         return fetcher
 
     try:
-        return audit.main(request["argv"], fetcher_factory=factory, page_policy=qualify_optional_findings)
+        return audit.main(request["argv"], fetcher_factory=factory,
+                          page_policy=lambda page, raw: qualify_page(page, raw, request["index_intent"]))
     finally:
         with request_path.with_name("collection-state.json").open("x", encoding="utf-8") as output:
             json.dump({"requests": fetcher.requests_made if fetcher else 0,

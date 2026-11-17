@@ -127,5 +127,41 @@
       "Local HTML input is captured as analyzed and hash-bound to its receipt.",
       "Internal nofollow is a contextual editorial finding."
     ]
+  },
+  "release_0_3_1": {
+    "release": "0.3.1",
+    "observed_on": "2026-11-17",
+    "tests": {
+      "test-seo-pack": {
+        "count": 29,
+        "log_sha256": "bf4f993d80497f75cece542d1e2339005abd5bbfd5e1cc249f331ede9a5b6ee9"
+      },
+      "test-seo-master-sites": {
+        "count": 64,
+        "log_sha256": "377eac9f1fc038571b674597f8c9350147a6d7d319e573bd02babd17ef048c7f"
+      },
+      "test-seo-master-downloads": {
+        "count": 6,
+        "log_sha256": "4ad8b3ddd9267da74cd4650aa7794a411bedba3c57f01ee06dd4166c356e62e3"
+      },
+      "test-seo-master-quick-audit": {
+        "count": 9,
+        "log_sha256": "41438e8ad30cb7bc2c10228e073dc46d2f4bda80d3066ea9ff89027ac832fc80"
+      },
+      "upstream-compat": {
+        "count": 753,
+        "log_sha256": "bf7d3fe2a04d0bcbd0f010a287af67fc719260b5257a62148f5d56e886bfd0a5"
+      }
+    },
+    "fixes": [
+      "literal HTML with URL and line in the priority queue",
+      "separate HTTP header evidence",
+      "noindex is evaluated against explicit index intent and other findings remain visible when intent is unknown"
+    ],
+    "offline_browser": {
+      "report_sha256": "1441a4ddbb1339114f497ee5a075865653335aa0c11eedaed67d81225559a707",
+      "external_requests": 0,
+      "console_errors": 0
+    }
   }
 }

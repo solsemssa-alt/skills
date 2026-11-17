@@ -851,7 +851,7 @@ def c_x_robots(ctx):
     low = value.lower()
     if "noindex" in low or "none" in low:
         return bad("В заголовке ответа стоит noindex", value=esc(value, 120), severity="critical",
-                   fix="Убрать noindex из X-Robots-Tag на уровне сервера или CDN")
+                   fix="Убрать noindex из X-Robots-Tag, если URL должен быть в поиске")
     return info("Заголовок задан", value=esc(value, 120))
 
 
@@ -2999,6 +2999,9 @@ def queue_item(row: dict, *, registry: dict | None = None) -> dict:
             and is_engine_requirement(row)}
     if row.get("note"):
         item["note"] = row["note"]
+    for key in ("source_quote", "evidence_kind"):
+        if row.get(key):
+            item[key] = row[key]
     if row.get("blocking_text"):
         item["blocking"] = True
     return item
@@ -3113,8 +3116,11 @@ def audit_page(source: str, *, fetcher=None, keys: list[str], options: dict) -> 
             bundle["host_variants"] = {"error": f"{type(exc).__name__}: {exc}"}
     ctx = Facts(bundle, keys=keys, options=options)
     rows = imported_rows(bundle) + run_checks(ctx, CHECKS, ctx)
-    return {"target": source, "url": url, "status": page.get("fetch", {}).get("status"),
-            "title": page.get("title"), "rows": rows, "facts": bundle}
+    result = {"target": source, "url": url, "status": page.get("fetch", {}).get("status"),
+              "title": page.get("title"), "rows": rows, "facts": bundle}
+    if options.get("page_policy") is not None:
+        options["page_policy"](result, raw)
+    return result
 
 
 def promoted_host_rows(ok_pages: list[dict], registry: dict, taken: set) -> list[dict]:
@@ -3251,6 +3257,7 @@ def build_report(pages: list[dict], *, registry: dict, keys: list[str], options:
         "sample_links": site_pages.graph,
         "recurring": recurring,
         "fix_first": fixes[:25],
+        "master_page_evidence": bool(options.get("page_policy")),
         "registry_rules": list(registry.get("rules") or []),
         "warnings": list(registry.get("warnings") or []),
     }
@@ -3478,12 +3485,21 @@ def _fix_li(item: dict, total: int) -> str:
     else:
         where = ""
     edit = ' <span class="tag edit">ориентир редактора</span>' if item.get("editor_guideline") else ""
+    quote = item.get("source_quote") or {}
+    proof = ""
+    if quote.get("kind") == "html":
+        proof = (f'<span class="what ev">HTML · {_h(quote["target"])} · строка {_h(quote["line"])} '
+                 f'<code>{_h(quote["text"])}</code></span>')
+    elif quote.get("kind") == "http-header":
+        proof = f'<span class="what ev">Заголовок ответа · <code>{_h(quote["text"])}</code></span>'
+    elif item.get("evidence_kind"):
+        proof = f'<span class="what ev">Доказательство · {_h(item["evidence_kind"])}</span>'
     return (f'<li><b>{_h(item["title"])}</b> <span class="tag sev">{_h(item["severity"])}</span>'
             f' <span class="tag">{_h(item["group_title"])}</span>{where}{edit}'
             f'<span class="what">{_h(item.get("observation"))}'
             + (f' → {_h(item["fix"])}' if item.get("fix") else "") + "</span>"
             + (f'<span class="what ev">Примечание: {_h(item["note"])}</span>' if item.get("note") else "")
-            + "</li>")
+            + proof + "</li>")
 
 
 def _fix_html(items: list[dict], total: int = 1) -> str:
@@ -3667,7 +3683,12 @@ def render_html(report: dict) -> str:
         parts.append('<p class="sub small">Порядок — по серьёзности из реестра параметров, '
                      "а не по нашему ощущению важности.</p>")
     checked = sum(1 for p in report["pages"] if not p.get("error"))
-    parts.append(_fix_html(report["fix_first"], checked))
+    queue = report["fix_first"]
+    if report.get("master_page_evidence") and len(queue) > 5:
+        parts.append(_fix_html(queue[:5], checked))
+        parts.append('<details><summary>Следующие находки</summary>' + _fix_html(queue[5:], checked) + '</details>')
+    else:
+        parts.append(_fix_html(queue, checked))
     if report.get("recurring"):
         parts.append(_recurring_html(report["recurring"], checked))
     if not many:
@@ -4327,7 +4348,7 @@ def aggregate_findings(per_page: list[tuple[str, list[dict]]], *,
                 a = agg[r["id"]] = dict(item, pages=[], verdicts=Counter(), example_page=label)
                 rank[r["id"]] = key
             elif key < rank[r["id"]]:
-                for k in ("severity", "verdict", "observation", "fix", "note"):
+                for k in ("severity", "verdict", "observation", "fix", "note", "source_quote", "evidence_kind"):
                     if k in item:
                         a[k] = item[k]
                     else:
@@ -4460,7 +4481,7 @@ def main(argv: list[str] | None = None, *, fetcher_factory=None, page_policy=Non
                    "sitemap": site_mode if args.sitemap is None else args.sitemap,
                    "ai_files": site_mode if args.ai_files is None else args.ai_files,
                    "host_variants": site_mode if args.host_variants is None else args.host_variants,
-                   "delay": delay, "robots_cache": {}}
+                   "delay": delay, "robots_cache": {}, "page_policy": page_policy}
         site_scan = None
         if args.site:
             if not http_safe.is_url(args.site):
@@ -4485,8 +4506,6 @@ def main(argv: list[str] | None = None, *, fetcher_factory=None, page_policy=Non
         for src in sources:
             try:
                 page = audit_page(src, fetcher=fetcher, keys=keys, options=options)
-                if page_policy is not None:
-                    page_policy(page)
                 if page.get("error") and len(sources) == 1:
                     raise http_safe.CliError(page["error"], page.get("code", "page_failed"))
                 pages.append(page)
