@@ -4,6 +4,17 @@
   "scope": "Public discovery metadata and task sources; not a bundled tool fleet or execution allowlist",
   "components": [
     {
+      "id": "papa-seo-v0.2.4",
+      "url": "https://github.com/AffPapa/papa-seo/releases/tag/v0.2.4",
+      "kind": "pinned-public-collector",
+      "version": "0.2.4",
+      "commit": "8307ac54dfb4fbc76332e8aadeb7cd8ea4a529ea",
+      "source_assessment": "Pinned runtime, 415 parameter crosswalk, 30 module routes, read trace and reported five-site research.",
+      "execution": "Bundled stdlib audit via a Master-scoped wrapper; integrated adapted source contains LICENSE and notices.",
+      "runtime": "Python 3.10+; scoped public static HTML or explicit saved file.",
+      "acquisition_proof": "Needs actual property and observation data."
+    },
+    {
       "id": "doc-0a1c82c044ac",
       "url": "https://developers.google.com/search/docs/essentials/spam-policies",
       "kind": "primary-or-public-documentation",

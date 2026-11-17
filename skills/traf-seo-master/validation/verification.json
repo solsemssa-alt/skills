@@ -75,5 +75,57 @@
     "observation_date": "2026-11-02",
     "scope": "Capability rows preserve recorded synthetic native-agent exercises; original transcripts and the earlier bounded Lighthouse public canary remain with the owning project and are not included in this portable receipt.",
     "current_revalidation": "The current local suites and source review above check only their declared contract scope; no fresh live canary was run."
+  },
+  "release_0_3_0": {
+    "release": "0.3.0",
+    "observed_on": "2026-11-17",
+    "master_check_count": 145,
+    "mapped_papa_seo_parameters": 415,
+    "papa_seo_release": "0.2.4",
+    "papa_seo_commit": "8307ac54dfb4fbc76332e8aadeb7cd8ea4a529ea",
+    "suites": {
+      "package": {
+        "tests": 29,
+        "status": "passed",
+        "log": "test-seo-pack.log",
+        "sha256": "0b28c53820ec7ff2e85b8e70866a1b86362fe986919aaf62895d4bad6ffd8f8e"
+      },
+      "site-contracts": {
+        "tests": 64,
+        "status": "passed",
+        "log": "test-seo-master-sites.log",
+        "sha256": "4f5196a815288bb5be1b01ad2f50012d7ca8cf5a68f3e85b6fabc4f7d3797b35"
+      },
+      "downloads": {
+        "tests": 6,
+        "status": "passed",
+        "log": "test-seo-master-downloads.log",
+        "sha256": "23df345ce4f8f56df817581caf85d7c4079c04642b4737a07dabf64d9cf7ffc1"
+      },
+      "quick-audit": {
+        "tests": 7,
+        "status": "passed",
+        "log": "test-seo-master-quick-audit.log",
+        "sha256": "89e483ddb5f451f0349149f643215ef6e4623584bcfe289ea8d18f3ff32f79e8"
+      },
+      "pinned-upstream-compatibility": {
+        "tests": 753,
+        "status": "passed",
+        "log": "upstream-compat.log",
+        "sha256": "fa2240d16fddc05100415444332c3e699641a210cf86d402f3921bb36d2d8b42"
+      }
+    },
+    "offline_html_browser": {
+      "engine": "Chromium",
+      "external_requests": 0,
+      "console_errors": 0
+    },
+    "effects": "Local fixtures, selected read-only source page, byte-verified package. Engine property, live indexing, provider account, and search outcomes need their own evidence.",
+    "accompanying_review_fixes": [
+      "Indexing language refers to observed state and the intended URL policy.",
+      "Missing Open Graph, structured data and favicon are conditional diagnostics. Mobile layout needs rendered evidence.",
+      "Local HTML input is captured as analyzed and hash-bound to its receipt.",
+      "Internal nofollow is a contextual editorial finding."
+    ]
   }
 }

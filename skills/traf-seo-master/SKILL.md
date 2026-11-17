@@ -4,7 +4,7 @@ description: "Use when doing SEO, GEO, content, publishing or acquisition."
 license: MIT
 metadata:
   author: TRAF
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # TRAF SEO Master
@@ -23,6 +23,8 @@ Discover actual host tools before depending on them. Prefer connected official i
 
 ## Audit a site or portfolio
 
+For a read-only first pass with an HTML report, run [Quick audit](references/quick-audit.md) on the exact URL, site sample, supplied list, or local HTML. Use the [papa-seo crosswalk](references/papa-seo-map.json) to route the returned observations into Master evidence. For a site in development or recurring observations, follow [Site planning](references/site-planning.md).
+
 For “audit this site”, “check both sites”, a new site or portfolio missing work, read [Site audits](references/site-audits.md). Use the **same complete check universe** from [checks.json](references/checks.json) for every profile. Determine applicability per site from evidence; do not create a reduced brand-specific checklist. [Source coverage](references/source-coverage.json) preserves the multi-source rule bindings and read/adoption gaps. Claude SEO or any other single source is one input to this master.
 
 The native agent executes this workflow: resolve the profile and exact targets → reuse valid receipts → perform remaining permitted collector/source/expert checks → import evidence → return prioritized findings → carry permitted fixes through matching readback. Account access and observation windows can remain unknown while independent work continues. **Generating a plan, prompts, handoffs or an offline matrix does not complete an audit.** Execute available checks during the request and retain their actual results.
@@ -33,6 +35,8 @@ Enroll further sites through profile/input files. Use `site-missing --sites` aga
 
 | Task | Load |
 |---|---|
+| Read-only HTML report, first five fixes, page or sitemap sample | [Quick audit](references/quick-audit.md) |
+| New/pre-launch site plan or weekly search and analytics data | [Site planning](references/site-planning.md) |
 | Full site audit, new-site enrollment, portfolio coverage or missing work | [Site audits](references/site-audits.md) |
 | Audience target, choosing bets, growth/stop decisions | [Acquisition](references/acquisition.md) |
 | Keywords, corpus reuse, intent/SERP, competitors, trends | [Intelligence](references/intelligence.md) |
@@ -51,6 +55,7 @@ Enroll further sites through profile/input files. Use `site-missing --sites` aga
 | Versions, optional tools, updating sources and gaps | [Upstream maintenance](references/upstream-maintenance.md) |
 | Current Marketing Skills / Claude SEO coverage and source conflicts | [Reviewed upstream skills](references/upstream-skill-review.md) |
 | Qualifying upstream collectors, account adapters and plugin behavior | [Reviewed collector contracts](references/source-runtime-review.md) |
+| AffPapa collector provenance, cases and complete parameter routes | [papa-seo integration](references/papa-seo-review.md) |
 
 The machine-readable [coverage map](references/capabilities.json) separates instruction route, shipped adapter, dependency/tool availability, host runtime, live authentication and acquisition proof. [Public source catalogue](references/upstreams.json) is an on-demand discovery index. Unknown or missing capability stays visible; do not call every listed repository tested or activated.
 
@@ -71,11 +76,14 @@ Use Python 3 from the package directory or its full path; quote paths with space
 ```text
 python3 scripts/seo-master.py doctor
 python3 scripts/seo-master.py coverage
+python3 scripts/seo-master.py quick-audit --site https://example.com --out /path/to/fresh/output
 python3 scripts/seo-master.py install --host codex --project /path/to/existing/project --dry-run
 python3 scripts/seo-master.py audit --url https://example.com/ --lighthouse /path/to/lighthouse --out /path/to/fresh/output
 ```
 
 `doctor` checks package integrity/routes. `install` copies to the selected project host folder and refuses differing/owner-edited targets. [Bootstrap](bootstrap.md) covers Codex/Claude/Cursor setup, invocation and discovery/runtime limits.
+
+`quick-audit` runs the bundled read-only collector and produces local HTML and JSON evidence. [Quick audit](references/quick-audit.md) covers access and report interpretation.
 
 `audit` remains the pinned single-URL Lighthouse collector with raw logs/receipts and explicit errors/timeouts. It cannot establish full-site, engine/index, field CWV or traffic results. See [Performance](references/performance.md) for runtime/storage/browser requirements.
 

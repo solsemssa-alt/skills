@@ -53,6 +53,8 @@ Do not replay completed or UNKNOWN effects to “verify” them. Read retained r
 
 When parallel work helps, use bounded native collaborators with check IDs/revisions, selected site/run, owned output, exact allowed roots/targets, inputs/hashes, relevant source excerpts, expected evidence/acceptance and permission boundary. Preserve others' work and the selected strong model. Inspect each actual result before importing it. Packets do not replace execution and do not create another controller.
 
+For an immediate read-only HTML report, use [Quick audit](quick-audit.md). It binds the native filter and runtime to [papa-seo’s parameter inventory](papa-seo-map.json). Import selected raw rows as candidate observations only after rechecking their facets, population, source and timeliness. The quick report is a bounded collector result.
+
 ## Evidence import and missing work
 
 Use the shipped profile/evidence examples and actual `--help` contract for JSON fields. The profile explicitly records `source_config_binding`: site identity, source kind/revision, config hash and serving origin/revision; unknown values stay null. An observation may use only the primary binding or an explicitly declared alternative in `source_config_bindings`, keeping local and public contexts separate. A profile hash alone does not establish a config/deployment revision. A file-based source proof uses `source: {kind: "files", revision: null, files_sha256: {"actual/path": "actual SHA256"}}`; retain the actual file bytes and hashes. Public HTTP facts need the bindings required by their assertion, usually site/origin, rather than an invented Git/deployment revision. File proof alone does not establish source-to-public equivalence.

@@ -60,3 +60,5 @@ Verify the expected and actual credential principal/scopes and exact target cove
 Keep request dimensions, filters, aggregation, dataState, limits and raw source responses through the final report. Query/page rows are pairs, and a filtered aggregate remains filtered. Daily unique users cannot be summed into whole-period unique users; entry visits, visits, actions and pageviews retain their native definitions.
 
 Inspect delivered export units, row counts and field mappings against the source. Preserve a row cap, missing inspection field, partial aggregate and unavailable/thresholded value as such. [Reviewed adapter limits](source-runtime-review.md).
+
+For an ongoing weekly readback with comparable inputs, see [Site planning](site-planning.md#weekly-observation-once-live).

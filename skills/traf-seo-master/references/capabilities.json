@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "package": "traf-seo-master",
-  "package_version": 3,
+  "package_version": 4,
   "reviewed_on": "2026-11-02",
   "scope": "Unified agent workflow and selective helpers; no automatic provider activation",
   "reference_claims": [
@@ -25,6 +25,16 @@
   ],
   "coverage_semantics": "Instruction route, shipped adapter, dependency availability, host runtime, live authentication and acquisition proof are separate.",
   "capabilities": [
+    {
+      "id": "quick-audit",
+      "title": "Read-only HTML SEO report and prioritized fixes",
+      "implementation": "Pinned papa-seo 0.2.4 runtime, scoped by Master. Page, URL list, sampled site or explicit HTML.",
+      "verification": "Run receipt, raw HTML/JSON and actual sample. Property, rendering and traffic proofs remain distinct.",
+      "reference": "references/quick-audit.md",
+      "source_ids": [
+        "papa-seo-v0.2.4"
+      ]
+    },
     {
       "id": "reach-strategy",
       "title": "Reach Strategy",

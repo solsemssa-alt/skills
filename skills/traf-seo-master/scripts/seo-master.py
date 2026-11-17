@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Static package checks, conservative local install, and a Lighthouse adapter."""
+"""Static package checks, project-local install, and read-only audit commands."""
 
 import argparse
 import ctypes
 from datetime import datetime, timezone
 import hashlib
+from html import escape
 import importlib.util
 import json
 import math
@@ -25,8 +26,11 @@ CORE = ("SKILL.md", "scripts/seo-master.py", "references/capabilities.json",
         "references/upstreams.json")
 SITE_CORE = ("scripts/site-audits.py", "references/checks.json",
              "references/source-coverage.json")
-HOSTS = {"codex": ".agents", "claude": ".claude", "cursor": ".cursor"}
+HOSTS = {"codex": ".agents", "claude": ".claude", "cursor": ".cursor",
+         "copilot": ".github", "gemini": ".gemini", "openclaw": ".agents"}
 LIGHTHOUSE_VERSION = "13.6.0"
+PAPA_COMMIT = "8307ac54dfb4fbc76332e8aadeb7cd8ea4a529ea"
+PAPA_ROOT = "assets/papa-seo"
 CATEGORIES = ("performance", "seo", "accessibility", "best-practices")
 
 
@@ -113,6 +117,39 @@ def site_audit_module():
     return module
 
 
+def papa_runtime(package):
+    root = package / PAPA_ROOT
+    manifest = snapshot(root)
+    origin = json.loads((root / "origin.json").read_text(encoding="utf-8"))
+    files = {name: row["sha256"] for name, row in manifest.items()
+             if row["kind"] == "file" and name != "origin.json"}
+    if origin.get("commit") != PAPA_COMMIT or files != origin.get("files_sha256"):
+        raise ValueError("pinned papa-seo runtime files do not match origin.json")
+    return root, origin
+
+
+def papa_parameter_count(package, checks):
+    registry_path = package / PAPA_ROOT / "references/registry.json"
+    registry = read_audit_object(registry_path)["params"]
+    crosswalk = read_audit_object(package / "references/papa-seo-map.json")
+    if crosswalk["upstream_registry_sha256"] != hashlib.sha256(registry_path.read_bytes()).hexdigest():
+        raise ValueError("papa-seo crosswalk registry hash differs")
+    expected = {item["id"]: item for item in registry}
+    rows = crosswalk["parameters"]
+    if len(rows) != len(expected) or {row["id"] for row in rows} != set(expected):
+        raise ValueError("papa-seo crosswalk needs exactly one row per parameter")
+    for row in rows:
+        if not row["master_ids"] or not set(row["master_ids"]) <= set(checks):
+            raise ValueError("unresolved Master IDs for " + row["id"])
+        source = expected[row["id"]]
+        for field in ("scope", "signal", "source_kind"):
+            if row[field] != source[field]:
+                raise ValueError("papa-seo crosswalk changes source " + field + " for " + row["id"])
+        if row["upstream_status"] != source["status"]:
+            raise ValueError("papa-seo crosswalk changes source status for " + row["id"])
+    return len(rows)
+
+
 def check_package(package):
     package = Path(package)
     errors = []
@@ -170,6 +207,8 @@ def check_package(package):
                 if not isinstance(source_id, str) or source_id not in source_ids:
                     errors.append(cap_id + " has unknown source id: " + str(source_id))
     master = {}
+    checks = {}
+    version = None
     # Legacy fixture/packages keep their declared small surface. Any updated
     # entry, version or new core file requires the complete master graph.
     updated = any(relative in manifest for relative in SITE_CORE)
@@ -197,6 +236,14 @@ def check_package(package):
                           "registry_version": registry["registry_version"]}
             except (OSError, ValueError, UnicodeError, TypeError, KeyError) as exc:
                 errors.append("invalid master graph: " + str(exc))
+    if (type(version) is int and version >= 4) or any(
+            name == PAPA_ROOT or name.startswith(PAPA_ROOT + "/") for name in manifest):
+        try:
+            _, origin = papa_runtime(package)
+            master["quick_audit"] = {"upstream_version": origin["version"], "commit": origin["commit"],
+                                     "mapped_parameters": papa_parameter_count(package, checks)}
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            errors.append("invalid papa-seo runtime: " + str(exc))
     report = {"status": "invalid" if errors else "static-ready", "package": str(package),
               "capability_count": len(capabilities), "source_count": len(components),
               "authentication": "unverified", "host_runtime": "unverified", "errors": errors,
@@ -459,6 +506,191 @@ def audit(args):
     return 0 if receipt["status"] == "completed" else (130 if interrupted else 1)
 
 
+def read_audit_object(path):
+    with path.open(encoding="utf-8") as handle:
+        data = json.load(handle, parse_constant=reject_non_json_constant, parse_float=finite_json_float)
+    if not isinstance(data, dict):
+        raise ValueError(path.name + " must contain a JSON object")
+    return data
+
+
+def public_input_url(url):
+    parsed = urlsplit(url)
+    valid = (parsed.scheme in ("http", "https") and parsed.hostname and not parsed.username
+             and parsed.password is None and not any(c.isspace() or ord(c) < 32 for c in url))
+    if not valid:
+        raise ValueError("each selected target must be a public HTTP(S) URL without credentials")
+    return url
+
+
+def selected_quick_audit_input(args):
+    if args.base_url is not None and args.html is None:
+        raise ValueError("--base-url describes an offline --html file")
+    if args.html is not None:
+        path = no_symlink_components(args.html)
+        if not path.is_file() or path.suffix.lower() not in (".html", ".htm"):
+            raise ValueError("--html must name an existing HTML file")
+        if path.stat().st_size > 5 * 1024 * 1024:
+            raise ValueError("--html exceeds the collector's 5 MiB input limit")
+        main_args = [str(path)]
+        if args.base_url:
+            main_args.extend(["--base-url", public_input_url(args.base_url)])
+        return "supplied-html", [], main_args, str(path)
+    if args.pages is not None:
+        path = no_symlink_components(args.pages)
+        if not path.is_file():
+            raise ValueError("--pages must name an existing URL-list file")
+        with path.open("rb") as handle:
+            body = handle.read(1024 * 1024 + 1)
+        if len(body) > 1024 * 1024:
+            raise ValueError("--pages exceeds the collector's 1 MiB input limit")
+        urls = [line.strip() for line in body.decode("utf-8-sig").splitlines()
+                if line.strip() and not line.lstrip().startswith("#")]
+        if not 1 <= len(urls) <= 20:
+            raise ValueError("--pages requires 1 to 20 URLs")
+        urls = list(dict.fromkeys(public_input_url(url) for url in urls))
+        return "declared-url-list", urls, [], str(path)
+    url = public_input_url(args.site or args.url)
+    if args.site:
+        parsed = urlsplit(url)
+        if parsed.path not in ("", "/") or parsed.query or parsed.fragment:
+            raise ValueError("--site requires an origin; use --url for a specific page")
+        return "site-sample", [url], ["--site", url, "--limit", str(args.limit)], url
+    return "single-url", [url], [url], url
+
+
+def report_priorities(report):
+    # Select the original queue rows, and cite an actual affected page instead
+    # of reusing the first occurrence of a parameter from any page in the run.
+    pages = {page.get("url") or page["target"]: page for page in report["pages"]
+             if not page.get("error")}
+    site = report.get("site") or {}
+    items = []
+    for finding in report["fix_first"][:5]:
+        item = dict(finding)
+        targets = [item["page"]] if item.get("page") else item.get("pages", [])
+        if not targets and len(pages) == 1:
+            targets = list(pages)
+        containers = [(target, pages[target]) for target in targets if target in pages]
+        if not targets:
+            containers.append((None, site))
+        for target, container in containers:
+            rows = (row for group in container.get("groups", []) for row in group.get("params", []))
+            row = next((row for row in rows if row["id"] == item["id"]
+                        and row["verdict"] == item["verdict"]), None)
+            if row is not None:
+                item["evidence_target"] = target
+                for key in ("evidence", "kind", "source"):
+                    if row.get(key) is not None:
+                        item[key] = row[key]
+                break
+        items.append(item)
+    return items
+
+
+def quick_audit(args):
+    if not 1 <= args.limit <= 100 or not math.isfinite(args.timeout) or not 0 < args.timeout <= 900:
+        raise ValueError("--limit must be 1 to 100 and --timeout must be positive and at most 900 seconds")
+    if sys.version_info < (3, 10):
+        raise ValueError("quick-audit requires Python 3.10 or newer")
+    scope, urls, main_args, source = selected_quick_audit_input(args)
+    output = no_symlink_components(args.out)
+    if output.exists():
+        raise ValueError("output directory already exists; choose a fresh path")
+    vendor, origin = papa_runtime(Path(__file__).resolve().parent.parent)
+    supplied_html = None
+    if scope == "supplied-html":
+        with Path(source).open("rb") as handle:
+            supplied_html = handle.read(5 * 1024 * 1024 + 1)
+        if len(supplied_html) > 5 * 1024 * 1024:
+            raise ValueError("--html exceeds the collector's 5 MiB input limit")
+    output.mkdir(mode=0o700, parents=True)
+    input_path = output / "input.html"
+    if supplied_html is not None:
+        input_path.write_bytes(supplied_html)
+        main_args[0] = str(input_path)
+    if scope == "declared-url-list":
+        target_list = output / "targets.txt"
+        target_list.write_text("\n".join(urls) + "\n", encoding="utf-8")
+        main_args = ["--pages", str(target_list)]
+    html_path = output / "audit.html"
+    json_path = output / "audit.json"
+    request_path = output / "request.json"
+    page_limit = args.limit if args.site else max(1, len(urls))
+    request_budget = 16 + 3 * page_limit
+    argv = main_args + ["--out", str(html_path), "--json", str(json_path), "--brief",
+                        "--delay", "2", "--state-dir", str(output), "--lang", args.lang]
+    for keys in args.keys:
+        argv.extend(["--keys", keys])
+    write_json(request_path, {"argv": argv, "urls": urls, "site_sample": bool(args.site),
+                              "request_budget": request_budget})
+    receipt = {"schema_version": 1, "status": "error", "scope": scope, "source": source,
+               "started_at": utc_now(), "collector_version": origin["version"],
+               "collector_commit": origin["commit"], "network_requests": None,
+               "request_budget": request_budget, "returncode": None, "errors": []}
+    if supplied_html is not None:
+        receipt["input_sha256"] = hashlib.sha256(supplied_html).hexdigest()
+    stdout_path, stderr_path = output / "collector-stdout.json", output / "collector-stderr.log"
+    # Secrets and host Python setup are outside this subprocess. The bundle is
+    # the only non-stdlib code loaded. All temporary files stay with the run.
+    environment = {name: value for name, value in os.environ.items()
+                   if name in ("SYSTEMROOT", "WINDIR", "LANG", "LC_ALL")}
+    environment.update({"TMPDIR": str(output), "TEMP": str(output), "TMP": str(output)})
+    with stdout_path.open("xb") as stdout, stderr_path.open("xb") as stderr:
+        process = subprocess.Popen([sys.executable, "-I", "-B",
+                                    str(vendor / "scripts/traf_worker.py"), str(request_path)],
+                                   cwd=output, env=environment, stdout=stdout, stderr=stderr,
+                                   start_new_session=(os.name == "posix"))
+        try:
+            receipt["returncode"] = process.wait(timeout=args.timeout)
+        except (subprocess.TimeoutExpired, KeyboardInterrupt) as exc:
+            stop_own_process_group(process)
+            receipt["returncode"] = process.returncode
+            receipt["status"] = "timeout" if isinstance(exc, subprocess.TimeoutExpired) else "interrupted"
+            receipt["errors"].append(receipt["status"])
+    state_path = output / "collection-state.json"
+    if state_path.is_file():
+        state = read_audit_object(state_path)
+        receipt.update(network_requests=state["requests"], network_attempts=state["attempts"],
+                       network_refusals=state["denied"])
+    if receipt["status"] not in ("timeout", "interrupted"):
+        try:
+            brief = read_audit_object(stdout_path)
+            if brief.get("error"):
+                receipt["errors"].append({"code": brief.get("code"), "message": brief["error"]})
+            else:
+                raw = read_audit_object(json_path)
+                if raw.get("version") != origin["version"] or not html_path.is_file():
+                    raise ValueError("collector report/version mismatch")
+                receipt["status"] = ("observed-http-error" if receipt["returncode"] == 2
+                                     else "partial" if brief.get("pages_failed") or receipt.get("network_refusals")
+                                     else "completed" if receipt["returncode"] == 0 else "error")
+                failed = brief.get("pages_failed", [])
+                receipt.update(coverage=raw["coverage"], attempted_pages=brief["pages"],
+                               observed_pages=brief["pages"] - len(failed),
+                               site_scan=brief.get("site_scan"), failed_pages=failed,
+                               totals=raw["totals"], fix_first=report_priorities(raw))
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            receipt["errors"].append(str(exc))
+    if not html_path.exists():
+        reason = escape(json.dumps(receipt["errors"], ensure_ascii=False))
+        html_path.write_text('<!doctype html><html lang="en"><meta charset="utf-8">'
+                             '<title>TRAF SEO Master audit</title><h1>Audit could not complete</h1>'
+                             f'<p>{reason}</p></html>\n', encoding="utf-8")
+    receipt["finished_at"] = utc_now()
+    receipt["report"] = str(html_path)
+    receipt["files_sha256"] = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+                               for path in (html_path, json_path, stdout_path, stderr_path, state_path,
+                                            request_path, input_path, output / "targets.txt")
+                               if path.is_file()}
+    write_json(output / "receipt.json", receipt)
+    # Temporary pacing markers belong to this run. Keep the actual outputs.
+    for marker in output.glob("papa-seo-pace-*.ts"):
+        marker.unlink()
+    emit(receipt)
+    return {"completed": 0, "observed-http-error": 2, "interrupted": 130}.get(receipt["status"], 1)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -475,6 +707,18 @@ def main():
     command.add_argument("--lighthouse", type=Path, required=True)
     command.add_argument("--out", type=Path, required=True)
     command.add_argument("--timeout", type=float, default=180)
+    command = commands.add_parser("quick-audit", help="read-only HTML/JSON audit using pinned papa-seo")
+    selected = command.add_mutually_exclusive_group(required=True)
+    selected.add_argument("--url")
+    selected.add_argument("--pages", type=Path)
+    selected.add_argument("--site")
+    selected.add_argument("--html", type=Path)
+    command.add_argument("--out", type=Path, required=True)
+    command.add_argument("--base-url")
+    command.add_argument("--limit", type=int, default=10, help="sitemap sample pages (default 10, max 100)")
+    command.add_argument("--keys", action="append", default=[], help="keyword phrases, separated by semicolons")
+    command.add_argument("--lang", choices=("auto", "ru", "en"), default="auto")
+    command.add_argument("--timeout", type=float, default=240)
     for name in ("site-add", "site-audit", "site-missing"):
         command = commands.add_parser(name)
         command.add_argument("--package", type=Path,
@@ -499,6 +743,8 @@ def main():
             return install(args)
         if args.command == "audit":
             return audit(args)
+        if args.command == "quick-audit":
+            return quick_audit(args)
         report, capabilities, _ = check_package(args.package)
         if args.command == "coverage":
             report["capabilities"] = capabilities

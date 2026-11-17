@@ -1,0 +1,5233 @@
+{
+  "schema_version": 1,
+  "source": "https://github.com/AffPapa/papa-seo/tree/8307ac54dfb4fbc76332e8aadeb7cd8ea4a529ea",
+  "upstream_registry_sha256": "bfd4057202a978e6e5a7eec4d0bd03309e18e499d240a9eab93b4e65917df556",
+  "scope": "Parameter-to-criterion routes for triage. Status is a pinned upstream declaration. Actual observations and full Master acceptance require their own evidence.",
+  "upstream_group_counts": {
+    "access": 72,
+    "markup": 66,
+    "meta": 38,
+    "content": 41,
+    "doc": 15,
+    "images": 25,
+    "links": 26,
+    "speed": 22,
+    "mobile": 22,
+    "security": 24,
+    "intl": 21,
+    "ai": 22,
+    "commerce": 21
+  },
+  "upstream_status_counts": {
+    "есть": 254,
+    "частично": 49,
+    "нет": 112
+  },
+  "parameters": [
+    {
+      "id": "access.final_status",
+      "master_ids": [
+        "seo-technical-http-status-soft404"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.initial_status",
+      "master_ids": [
+        "seo-technical-http-status-soft404"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.redirect_chain_len",
+      "master_ids": [
+        "seo-technical-redirects-equivalence-and-chain"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.redirect_loop",
+      "master_ids": [
+        "seo-technical-redirects-equivalence-and-chain"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.redirect_type",
+      "master_ids": [
+        "seo-technical-redirects-equivalence-and-chain"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "owner-or-expert-evidence"
+    },
+    {
+      "id": "access.meta_refresh",
+      "master_ids": [
+        "seo-technical-redirects-equivalence-and-chain"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.js_redirect",
+      "master_ids": [
+        "seo-technical-redirects-equivalence-and-chain"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.soft_404",
+      "master_ids": [
+        "seo-technical-http-status-soft404"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.status_410",
+      "master_ids": [
+        "seo-technical-http-status-soft404"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.status_429",
+      "master_ids": [
+        "seo-technical-http-edge-origin-errors",
+        "seo-technical-collector-bounds"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.noindex_meta",
+      "master_ids": [
+        "seo-technical-index-noindex-vs-crawl",
+        "seo-technical-render-initial-index-controls"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.noindex_header",
+      "master_ids": [
+        "seo-technical-index-noindex-vs-crawl",
+        "seo-technical-render-initial-index-controls"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.noindex_bot_scoped",
+      "master_ids": [
+        "seo-technical-index-noindex-vs-crawl",
+        "seo-technical-render-initial-index-controls"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.robots_meta_outside_head",
+      "master_ids": [
+        "seo-technical-index-noindex-vs-crawl",
+        "seo-technical-render-initial-index-controls"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.robots_meta_conflict",
+      "master_ids": [
+        "seo-technical-index-noindex-vs-crawl",
+        "seo-technical-render-initial-index-controls"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.robots_meta_unknown",
+      "master_ids": [
+        "seo-technical-index-noindex-vs-crawl",
+        "seo-technical-render-initial-index-controls"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.nofollow_meta",
+      "master_ids": [
+        "seo-technical-index-noindex-vs-crawl",
+        "seo-technical-render-initial-index-controls"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.unavailable_after",
+      "master_ids": [
+        "seo-technical-index-noindex-vs-crawl",
+        "seo-technical-render-initial-index-controls"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.indexifembedded",
+      "master_ids": [
+        "seo-technical-index-noindex-vs-crawl",
+        "seo-technical-render-initial-index-controls"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.robots_txt_status",
+      "master_ids": [
+        "seo-technical-crawl-robots-response"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.robots_txt_size",
+      "master_ids": [
+        "seo-technical-crawl-robots-groups"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.robots_txt_syntax",
+      "master_ids": [
+        "seo-technical-crawl-robots-groups"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "rfc",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.robots_googlebot",
+      "master_ids": [
+        "seo-technical-crawl-robots-groups"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "access.robots_yandexbot",
+      "master_ids": [
+        "seo-technical-crawl-robots-groups"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "access.robots_url_allowed",
+      "master_ids": [
+        "seo-technical-crawl-robots-groups"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "access.robots_assets",
+      "master_ids": [
+        "seo-technical-crawl-robots-groups"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.robots_group_specificity",
+      "master_ids": [
+        "seo-technical-crawl-robots-groups"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.robots_unsupported",
+      "master_ids": [
+        "seo-technical-crawl-robots-groups"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.robots_sitemap_line",
+      "master_ids": [
+        "seo-technical-sitemap-discovery-completion"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.robots_clean_param",
+      "master_ids": [
+        "seo-technical-facets-qualified-space",
+        "seo-technical-engine-regional-discovery"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_found",
+      "master_ids": [
+        "seo-technical-sitemap-discovery-completion"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_xml_valid",
+      "master_ids": [
+        "seo-technical-sitemap-format-limits"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_limits",
+      "master_ids": [
+        "seo-technical-sitemap-format-limits"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_abs_urls",
+      "master_ids": [
+        "seo-technical-sitemap-format-limits"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_host",
+      "master_ids": [
+        "seo-technical-sitemap-canonical-membership"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_http_urls",
+      "master_ids": [
+        "seo-technical-sitemap-canonical-membership"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_duplicates",
+      "master_ids": [
+        "seo-technical-sitemap-canonical-membership"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_lastmod_format",
+      "master_ids": [
+        "seo-technical-sitemap-modification-truth"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_lastmod_future",
+      "master_ids": [
+        "seo-technical-sitemap-modification-truth"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_lastmod_uniform",
+      "master_ids": [
+        "seo-technical-sitemap-modification-truth"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_priority",
+      "master_ids": [
+        "seo-technical-sitemap-format-limits"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_url_indexable",
+      "master_ids": [
+        "seo-technical-sitemap-canonical-membership"
+      ],
+      "upstream_status": "частично",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.sitemap_scope",
+      "master_ids": [
+        "seo-technical-sitemap-discovery-completion"
+      ],
+      "upstream_status": "частично",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.canonical_present",
+      "master_ids": [
+        "seo-technical-canonical-signal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.canonical_self",
+      "master_ids": [
+        "seo-technical-canonical-signal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.canonical_count",
+      "master_ids": [
+        "seo-technical-canonical-signal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.canonical_in_head",
+      "master_ids": [
+        "seo-technical-canonical-signal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.canonical_absolute",
+      "master_ids": [
+        "seo-technical-canonical-signal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.canonical_host",
+      "master_ids": [
+        "seo-technical-canonical-signal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.canonical_target_status",
+      "master_ids": [
+        "seo-technical-canonical-signal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.canonical_target_noindex",
+      "master_ids": [
+        "seo-technical-canonical-signal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.canonical_vs_robots",
+      "master_ids": [
+        "seo-technical-canonical-signal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "access.host_duplicates",
+      "master_ids": [
+        "seo-technical-redirects-equivalence-and-chain"
+      ],
+      "upstream_status": "частично",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.https_redirect",
+      "master_ids": [
+        "seo-technical-redirects-equivalence-and-chain"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.url_underscore",
+      "master_ids": [
+        "seo-technical-facets-qualified-space"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.url_length",
+      "master_ids": [
+        "seo-technical-facets-qualified-space"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.url_depth",
+      "master_ids": [
+        "seo-technical-facets-qualified-space"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.url_session_params",
+      "master_ids": [
+        "seo-technical-facets-qualified-space"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.url_case",
+      "master_ids": [
+        "seo-technical-facets-qualified-space"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.url_encoding",
+      "master_ids": [
+        "seo-technical-facets-qualified-space"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.faceted_param_order",
+      "master_ids": [
+        "seo-technical-facets-qualified-space"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "access.faceted_param_dupes",
+      "master_ids": [
+        "seo-technical-facets-qualified-space"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.pagination_self_canonical",
+      "master_ids": [
+        "seo-technical-pagination-identity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.pagination_href",
+      "master_ids": [
+        "seo-technical-pagination-identity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.pagination_rel",
+      "master_ids": [
+        "seo-technical-pagination-identity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.doc_size_limit",
+      "master_ids": [
+        "seo-technical-render-byte-cutoff"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "access.jsonld_offset",
+      "master_ids": [
+        "seo-technical-render-byte-cutoff"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.csr_dependency",
+      "master_ids": [
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "access.nav_without_href",
+      "master_ids": [
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.indexnow_key",
+      "master_ids": [
+        "seo-technical-notification-eligible-receipts"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "indexnow",
+      "editor_guideline": false,
+      "needed_evidence": "owner-or-expert-evidence"
+    },
+    {
+      "id": "access.crawl_budget_scale",
+      "master_ids": [
+        "seo-technical-facets-qualified-space"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "markup.jsonld_parses",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.jsonld_context",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.jsonld_type",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.jsonld_present",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.format_preference",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.visible_values",
+      "master_ids": [
+        "seo-technical-schema-visible-factual-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "markup.hidden_markup",
+      "master_ids": [
+        "seo-technical-schema-visible-factual-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.placeholders",
+      "master_ids": [
+        "seo-technical-schema-visible-factual-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.relative_urls",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.date_format",
+      "master_ids": [
+        "seo-technical-schema-identity-dates"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.date_vs_text",
+      "master_ids": [
+        "seo-technical-schema-identity-dates"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.price_format",
+      "master_ids": [
+        "seo-technical-schema-price-units",
+        "seo-technical-vertical-merchant"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.id_dangling",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.id_duplicate",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.url_vs_canonical",
+      "master_ids": [
+        "seo-technical-schema-identity-dates"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.formats_disagree",
+      "master_ids": [
+        "seo-technical-schema-visible-factual-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.retired_type",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.type_mismatch_pagetype",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "markup.yandex_supported",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.yandex_catalog_strict",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.schemaorg_vocab",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "schema_org",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_article",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_breadcrumb",
+      "master_ids": [
+        "seo-technical-schema-breadcrumbs"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_product",
+      "master_ids": [
+        "seo-technical-schema-price-units",
+        "seo-technical-vertical-merchant"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_offer",
+      "master_ids": [
+        "seo-technical-schema-price-units",
+        "seo-technical-vertical-merchant"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_organization",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_person",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_event",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_jobposting",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_localbusiness",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_recipe",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_videoobject",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_website",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_itemlist",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_qapage",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_review",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_softwareapp",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_faqpage",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "schemaorg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_discussion",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_speakable",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_paywall",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_imagelicense",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.req_dataset",
+      "master_ids": [
+        "seo-technical-schema-feature-eligibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_required",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_description",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_image_alt",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_image_size",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_image_reachable",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "markup.og_url_vs_canonical",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_locale",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_site_name",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_type_extra",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_yandex",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.twitter_card",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.twitter_fallback",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.twitter_image_alt",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.sd_vs_mobile",
+      "master_ids": [
+        "seo-technical-render-field-parity",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "markup.sd_after_js",
+      "master_ids": [
+        "seo-technical-render-field-parity",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "markup.sd_fake_reviews",
+      "master_ids": [
+        "seo-technical-schema-visible-factual-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.sd_self_serving",
+      "master_ids": [
+        "seo-technical-schema-visible-factual-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.org_consistency",
+      "master_ids": [
+        "seo-technical-schema-identity-dates"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "markup.jsonld_depth",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.title_present",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.title_count",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.title_in_head",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.title_length",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.title_duplicate_site",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "meta.title_boilerplate",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "meta.title_stuffing",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.title_vs_h1",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "meta.title_lang",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.title_separator",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.desc_present",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.desc_count",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.desc_length",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.desc_duplicate_site",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "meta.desc_equals_title",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.desc_truncated_text",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.yandex_title_desc_missing",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.h1_present",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.h1_count",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.h1_is_logo",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "meta.h1_empty_or_image",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.heading_order",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.heading_empty",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.heading_hidden",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.heading_count_total",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.heading_stuffing",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.heading_length",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.charset",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.doctype",
+      "master_ids": [
+        "seo-technical-render-initial-index-controls",
+        "seo-pseo-body-and-metadata-differentiation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.favicon_declared",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.favicon_square",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "meta.favicon_crawlable",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "meta.favicon_on_home",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.generator",
+      "master_ids": [
+        "seo-content-authorship-and-process"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "meta.author_byline",
+      "master_ids": [
+        "seo-content-authorship-and-process"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.words_main",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.words_vs_boilerplate",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.thin_page",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.chars",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.sentences",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.paragraphs",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.long_sentences",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.rhythm_uniform",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.nausea_classic",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "pkg",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.nausea_academic",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "pkg",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.water",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "pkg",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.stopwords_list",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.stems_top",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_in_title",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_in_description",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_in_h1",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_in_h2h6",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_in_first_para",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_in_alt",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_in_anchors",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_in_url",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "content.key_density_total",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "pkg",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_density_by_zone",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_exact_vs_morph",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_stuffing",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.key_missing",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.ngram_repeats",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.cooccurrence",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "pkg",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.readability_en",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.readability_ru",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.passive_share",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.cliche",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.officialese",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.chat_artifacts",
+      "master_ids": [
+        "seo-content-claims-and-fact-expiry",
+        "seo-abuse-observed-incident-and-policy"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.invisible_chars",
+      "master_ids": [
+        "seo-content-claims-and-fact-expiry",
+        "seo-abuse-observed-incident-and-policy"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.hidden_text",
+      "master_ids": [
+        "seo-content-claims-and-fact-expiry",
+        "seo-abuse-observed-incident-and-policy"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.main_content_position",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.lists_present",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.table_th",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.table_scope",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.table_caption",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.boilerplate_repeat_site",
+      "master_ids": [
+        "seo-content-answer-and-information-gain",
+        "seo-serp-page-type-fit"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "content.dates_visible",
+      "master_ids": [
+        "seo-content-claims-and-fact-expiry",
+        "seo-refresh-source-dependency"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "content.numbers_without_source",
+      "master_ids": [
+        "seo-content-claims-and-fact-expiry",
+        "seo-refresh-source-dependency"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "content.compare_versions",
+      "master_ids": [
+        "seo-content-claims-and-fact-expiry",
+        "seo-refresh-source-dependency"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.alt_missing",
+      "master_ids": [
+        "seo-technical-media-image-meaning"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.alt_empty",
+      "master_ids": [
+        "seo-technical-media-image-meaning"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.alt_is_filename",
+      "master_ids": [
+        "seo-technical-media-image-meaning"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.alt_stuffed",
+      "master_ids": [
+        "seo-technical-media-image-meaning"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.alt_length",
+      "master_ids": [
+        "seo-technical-media-image-meaning"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.alt_duplicate",
+      "master_ids": [
+        "seo-technical-media-image-meaning"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.dimensions",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.lazy_first_screen",
+      "master_ids": [
+        "seo-technical-performance-lcp-cause",
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "images.fetchpriority_many",
+      "master_ids": [
+        "seo-technical-performance-lcp-cause",
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.srcset",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.srcset_fallback",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.format",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.format_unsupported",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.extension_mismatch",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "images.weight",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "images.oversized",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "images.css_background",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.data_uri",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.src_missing",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.hidden",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.image_sitemap",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-vertical-image-search"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "images.robots_images",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-vertical-image-search"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "images.noimageindex",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-vertical-image-search"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "images.max_image_preview",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-vertical-image-search"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "links.total",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.by_region",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.main_region_internal",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.empty_anchor",
+      "master_ids": [
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.image_link_alt",
+      "master_ids": [
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.generic_anchor",
+      "master_ids": [
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.anchor_to_many",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "links.anchor_duplicate_target",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.nofollow_internal",
+      "master_ids": [
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.rel_sponsored",
+      "master_ids": [
+        "seo-authority-verified-link-profile",
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "owner-or-expert-evidence"
+    },
+    {
+      "id": "links.rel_ugc",
+      "master_ids": [
+        "seo-authority-verified-link-profile",
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.rel_unknown",
+      "master_ids": [
+        "seo-authority-verified-link-profile",
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.javascript_links",
+      "master_ids": [
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.target_blank_noopener",
+      "master_ids": [
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.internal_4xx",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "links.internal_redirects",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "links.internal_noindex",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "links.internal_blocked",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "links.external_hosts",
+      "master_ids": [
+        "seo-authority-verified-link-profile",
+        "seo-technical-links-crawlable-anchors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "links.orphan_pages",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "links.click_depth",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "folklore",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "links.incoming_by_region",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "links.internal_pagerank",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "links.cluster_hub",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "owner-or-expert-evidence"
+    },
+    {
+      "id": "links.anchor_text_overuse",
+      "master_ids": [
+        "seo-technical-links-graph-and-orphans",
+        "seo-pseo-internal-graph"
+      ],
+      "upstream_status": "частично",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "links.breadcrumbs_visible",
+      "master_ids": [
+        "seo-technical-schema-breadcrumbs"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.ttfb",
+      "master_ids": [
+        "seo-technical-performance-lab-contract",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "speed.html_bytes",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "speed.compression",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "speed.cache_control",
+      "master_ids": [
+        "seo-technical-performance-lab-contract",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "speed.cache_static",
+      "master_ids": [
+        "seo-technical-performance-lab-contract",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "speed.cdn_cache_status",
+      "master_ids": [
+        "seo-technical-performance-lab-contract",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "speed.scripts_count",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.blocking_scripts",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.blocking_css",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.resource_count_by_type",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.third_party_hosts",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.inline_css_bytes",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.inline_js_bytes",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.preload_hints",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.font_display",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.iframe_dimensions",
+      "master_ids": [
+        "seo-technical-performance-cls-cause"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.iframe_lazy",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.dom_size",
+      "master_ids": [
+        "seo-technical-performance-blocking-resources"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "speed.redirect_before_page",
+      "master_ids": [
+        "seo-technical-performance-lab-contract",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "speed.server_timing",
+      "master_ids": [
+        "seo-technical-performance-lab-contract",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "speed.field_data_needed",
+      "master_ids": [
+        "seo-technical-performance-field-cwv"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "verified-property"
+    },
+    {
+      "id": "speed.lcp_candidate",
+      "master_ids": [
+        "seo-technical-performance-lcp-cause"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "mobile.viewport_present",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.viewport_device_width",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.viewport_initial_scale",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.viewport_zoom_blocked",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.viewport_fixed_width",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "webdev",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.parity_content",
+      "master_ids": [
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "mobile.parity_robots",
+      "master_ids": [
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "mobile.parity_title_desc",
+      "master_ids": [
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "mobile.parity_alt",
+      "master_ids": [
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "mobile.parity_links",
+      "master_ids": [
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "mobile.lazy_on_interaction",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "mobile.separate_m_version",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "mobile.alternate_media_link",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.interstitial",
+      "master_ids": [
+        "seo-technical-mobile-overlay-confirmation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "mobile.tap_targets",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "browser-or-rendered-readback"
+    },
+    {
+      "id": "mobile.font_size",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "mobile.yandex_mobile_ready",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.yandex_same_site",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.https",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.tls_chain_ok",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.hsts",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "rfc",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.csp",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.nosniff",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.referrer_policy",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.permissions_policy",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.frame_options",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.coop_coep",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.cors_wildcard",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.mixed_content_active",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "security.mixed_content_passive",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "security.form_action_http",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "security.server_banner",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.set_cookie_flags",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.hidden_instructions",
+      "master_ids": [
+        "seo-abuse-observed-incident-and-policy",
+        "seo-technical-access-public-private"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "security.history_hijack",
+      "master_ids": [
+        "seo-abuse-observed-incident-and-policy",
+        "seo-technical-access-public-private"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "security.cloaking_ua",
+      "master_ids": [
+        "seo-abuse-observed-incident-and-policy",
+        "seo-technical-access-public-private"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.waf_blocks_bots",
+      "master_ids": [
+        "seo-abuse-observed-incident-and-policy",
+        "seo-technical-access-public-private"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "vendors",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.bot_authenticity",
+      "master_ids": [
+        "seo-technical-logs-verified-crawl"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.html_lang",
+      "master_ids": [
+        "seo-technical-locale-actual-inventory",
+        "seo-technical-locale-functional-adaptation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "intl.lang_valid",
+      "master_ids": [
+        "seo-technical-locale-actual-inventory",
+        "seo-technical-locale-functional-adaptation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "rfc",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "intl.lang_vs_text",
+      "master_ids": [
+        "seo-technical-locale-actual-inventory",
+        "seo-technical-locale-functional-adaptation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "intl.dir",
+      "master_ids": [
+        "seo-technical-locale-actual-inventory",
+        "seo-technical-locale-functional-adaptation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "intl.content_language",
+      "master_ids": [
+        "seo-technical-locale-actual-inventory",
+        "seo-technical-locale-functional-adaptation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "rfc",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.hreflang_present",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.hreflang_self",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "intl.hreflang_codes",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "intl.hreflang_x_default",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "intl.hreflang_absolute",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "intl.hreflang_duplicates",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "intl.hreflang_reciprocal",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.hreflang_target_status",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.hreflang_target_noindex",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.hreflang_vs_canonical",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.canonical_cross_language",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.hreflang_methods_conflict",
+      "master_ids": [
+        "seo-technical-locale-hreflang-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.translation_coverage",
+      "master_ids": [
+        "seo-technical-locale-actual-inventory",
+        "seo-technical-locale-functional-adaptation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "intl.geo_redirect",
+      "master_ids": [
+        "seo-technical-locale-actual-inventory",
+        "seo-technical-locale-functional-adaptation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "intl.meta_translated",
+      "master_ids": [
+        "seo-technical-locale-actual-inventory",
+        "seo-technical-locale-functional-adaptation"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "ai.indexable_for_ai",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.nosnippet",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.max_snippet",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.data_nosnippet",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "ai.notranslate",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.google_extended",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.search_bots_access",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "vendors",
+      "editor_guideline": false,
+      "needed_evidence": "owner-or-expert-evidence"
+    },
+    {
+      "id": "ai.training_bots_access",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "vendors",
+      "editor_guideline": false,
+      "needed_evidence": "owner-or-expert-evidence"
+    },
+    {
+      "id": "ai.user_fetch_bots",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "vendors",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.bot_level_confusion",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "vendors",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.yandex_additional",
+      "master_ids": [
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.llms_txt",
+      "master_ids": [
+        "seo-technical-agent-optional-protocols",
+        "seo-technical-agent-markdown-discovery"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "llmstxt",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.llms_txt_format",
+      "master_ids": [
+        "seo-technical-agent-optional-protocols",
+        "seo-technical-agent-markdown-discovery"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "llmstxt",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.llms_txt_links_alive",
+      "master_ids": [
+        "seo-technical-agent-optional-protocols",
+        "seo-technical-agent-markdown-discovery"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "llmstxt",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.llms_txt_injection",
+      "master_ids": [
+        "seo-abuse-observed-incident-and-policy"
+      ],
+      "upstream_status": "частично",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.ai_txt",
+      "master_ids": [
+        "seo-technical-agent-optional-protocols",
+        "seo-technical-agent-markdown-discovery"
+      ],
+      "upstream_status": "есть",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "ai.text_addressed_to_model",
+      "master_ids": [
+        "seo-abuse-observed-incident-and-policy"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "ai.answer_first",
+      "master_ids": [
+        "seo-geo-passages-and-original-need",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "ai.claims_sourced",
+      "master_ids": [
+        "seo-geo-passages-and-original-need",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "ai.csr_for_ai",
+      "master_ids": [
+        "seo-technical-render-field-parity",
+        "seo-technical-agent-purpose-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "ai.markup_vs_text",
+      "master_ids": [
+        "seo-geo-passages-and-original-need",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "ai.entity_sameas",
+      "master_ids": [
+        "seo-geo-passages-and-original-need",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.price_visible",
+      "master_ids": [
+        "seo-technical-vertical-merchant",
+        "seo-technical-schema-price-units"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.price_matches_markup",
+      "master_ids": [
+        "seo-technical-vertical-merchant",
+        "seo-technical-schema-price-units"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.availability",
+      "master_ids": [
+        "seo-technical-vertical-merchant",
+        "seo-technical-schema-price-units"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.aggregate_offer_misuse",
+      "master_ids": [
+        "seo-technical-vertical-merchant",
+        "seo-technical-schema-price-units"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.shipping_returns",
+      "master_ids": [
+        "seo-technical-vertical-merchant",
+        "seo-technical-schema-price-units"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.contacts_visible",
+      "master_ids": [
+        "seo-authority-entity-facts",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.contacts_image_only",
+      "master_ids": [
+        "seo-authority-entity-facts",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "commerce.legal_entity",
+      "master_ids": [
+        "seo-authority-entity-facts",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.legal_pages",
+      "master_ids": [
+        "seo-authority-entity-facts",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.payment_methods",
+      "master_ids": [
+        "seo-technical-vertical-merchant",
+        "seo-technical-schema-price-units"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.nap_consistency",
+      "master_ids": [
+        "seo-technical-vertical-local-business",
+        "seo-vertical-local-maps"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "owner-or-expert-evidence"
+    },
+    {
+      "id": "commerce.address_markup",
+      "master_ids": [
+        "seo-technical-vertical-local-business",
+        "seo-vertical-local-maps"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.hours",
+      "master_ids": [
+        "seo-technical-vertical-local-business",
+        "seo-vertical-local-maps"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.multi_location_pages",
+      "master_ids": [
+        "seo-technical-vertical-local-business",
+        "seo-vertical-local-maps"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "owner-or-expert-evidence"
+    },
+    {
+      "id": "commerce.location_clones",
+      "master_ids": [
+        "seo-technical-vertical-local-business",
+        "seo-vertical-local-maps"
+      ],
+      "upstream_status": "нет",
+      "scope": "site",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "declared-population-and-link-graph"
+    },
+    {
+      "id": "commerce.reviews_visible",
+      "master_ids": [
+        "seo-distribution-independent-reviews",
+        "seo-technical-schema-visible-factual-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.reviews_incentivized",
+      "master_ids": [
+        "seo-distribution-independent-reviews",
+        "seo-technical-schema-visible-factual-parity"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "commerce.thin_affiliate",
+      "master_ids": [
+        "seo-content-comparison-fairness",
+        "seo-content-answer-and-information-gain"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "estimate",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "selected-query-and-editorial-review"
+    },
+    {
+      "id": "commerce.cta_present",
+      "master_ids": [
+        "seo-ux-expectation-and-next-action"
+      ],
+      "upstream_status": "частично",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.form_labels",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.form_autocomplete",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.form_required_marked",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.form_method_get",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.duplicate_ids",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.anchor_targets",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.trust_signals",
+      "master_ids": [
+        "seo-authority-entity-facts",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "commerce.yandex_epos",
+      "master_ids": [
+        "seo-authority-entity-facts",
+        "seo-content-claims-and-fact-expiry"
+      ],
+      "upstream_status": "нет",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "yandex",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_duplicate",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "ogp",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_in_head",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.og_image_scheme",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access",
+        "seo-technical-render-field-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "markup.duplicate_types",
+      "master_ids": [
+        "seo-technical-schema-syntax-graph"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.landmarks",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.list_children",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.table_layout",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.form_no_submit",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "doc.search_form",
+      "master_ids": [
+        "seo-technical-a11y-native-controls",
+        "seo-ux-browser-accessibility"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "images.picture",
+      "master_ids": [
+        "seo-technical-media-responsive-delivery"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "intl.lang_inner",
+      "master_ids": [
+        "seo-technical-locale-actual-inventory",
+        "seo-technical-locale-functional-adaptation"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.apple_touch_icon",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.manifest",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "meta.theme_color",
+      "master_ids": [
+        "seo-technical-media-asset-preview-access"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.viewport_duplicate",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.viewport_unknown_keys",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.amphtml",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "mobile.x_ua_compatible",
+      "master_ids": [
+        "seo-technical-mobile-usable-layout",
+        "seo-technical-mobile-primary-parity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "editor",
+      "editor_guideline": true,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "security.csp_unsafe_inline",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.csp_upgrade_insecure",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    },
+    {
+      "id": "security.form_password_get",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "whatwg",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "security.http_links",
+      "master_ids": [
+        "seo-technical-access-public-private",
+        "seo-technical-http-edge-origin-errors"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "w3c",
+      "editor_guideline": false,
+      "needed_evidence": "exact-html-or-source-observation"
+    },
+    {
+      "id": "access.pagination_param",
+      "master_ids": [
+        "seo-technical-pagination-identity"
+      ],
+      "upstream_status": "есть",
+      "scope": "page",
+      "signal": "fact",
+      "source_kind": "google",
+      "editor_guideline": false,
+      "needed_evidence": "qualified-http-or-inventory-receipt"
+    }
+  ]
+}
